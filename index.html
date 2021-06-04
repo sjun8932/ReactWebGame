@@ -2,12 +2,12 @@
     <head>
         <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
         <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     </head>
     <body>
         <div id="root"></div> <!--결과 <div id="root"><button>Like</button></div> -->
-        <script>
-            const e = React.createElement;
-
+        <script type="text/babel">
+            // render(){ 이 안을 아래처럼 해주면 react.createelement는 필요가 없다 }
             class LikeButton extends React.Component {
                 constructor(props) {
                    super(props);
@@ -17,12 +17,13 @@
                 }
 
                 render(){
-                    return e('button', { onClick: ()=> { this.setState({ liked: true })}, type: 'submit' }, this.state.liked === true ? 'Liked' : 'Like'); // <button onclick="() => { console.log('clicked') }" type="submit">Liked</button>
+                    return <button type="submit" onClick={()=>{ this.setState({ liked:true })}}> {this.state.liked === true ? 'Liked' : 'Like'} </button>;; // <button onclick="() => { console.log('clicked') }" type="submit">Liked</button>
+                    // 리턴 값에 자바스크립트와 HTML이 공존할 수 없기에 바벨을 써 주어야 하고 5번줄과 9번줄이 변한다. 방금 설명한 문법이 JSX (JS + xml) 이다, 컨텐츠 안에 중괄호로 감싸주면 그 안에 자바스크립트를 또 쓸 수 있다.
                 }
             }
         </script>
-        <script>
-            ReactDOM.render(e(LikeButton), document.querySelector('#root'));
+        <script type="text/babel">
+            ReactDOM.render(<LikeButton />, document.querySelector('#root'));
         </script>
     </body>
 </html>
