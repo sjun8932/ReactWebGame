@@ -1,5 +1,4 @@
-@babel/core = 바벨의 기본적인 기능 (npm i -D @babel/core)
-@babel preset-env = 최신 문법을 client의 브라우저에 맞게 변경 (npm i @babel/preset-env)
-@babel/preset-react = 바벨이 jsx 읽게 해줌 (npm i @bable/preset-react)
-@babel/plugin-proposal-class-properties = babel에서 state문법을 사용하기 위해 설치
-babel-loader = 바벨이랑 웹팩 연결해줌
+babel/core = 바벨의 기본적인 기능 (npm i -D @babel/core)
+babel preset-env = 최신 문법을 client의 브라우저에 맞게 변경 (npm i @babel/preset-env)
+babel/preset-react = 바벨이 jsx 읽게 해줌 (npm i @bable/preset-react)
+bable-loader = 바벨이랑 웹팩이랑 연결해줌 (npm i babel-loader)
