@@ -1,30 +1,34 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-    name: 'wordrelay-setting',
+
     mode: 'development',
-    devtool: 'eval',
+    devtool: 'eval',  // 배포 단계에서는 hidden-source-map
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.jsx', '.js'],
+    },
+ 
+    entry: {
+        app: './client',
     },
 
-    entry: {
-        app:['./client'], // client.jsx 안에서 WordRelay를 불러들이고 있으니 배열안에 client.jsx만 넣으면 된다.
-    }, // 입력
-
     module: {
+
         rules: [{
             test: /\.jsx?/,
             loader: 'babel-loader',
             options: {
-               presets: ['@babel/preset-env', '@babel/preset-react'],
-               plugins: ['@babel/plugin-proposal-class-properties'], 
+                presets: [['@babel/preset-env', {targets: { browsers: ['> 5% in KR', 'last 2 chrome versions'],},debug: true,}], '@babel/preset-react'],
+                plugins: [],
             },
         }],
     },
-
+    plugins:[
+        new webpack.LoaderOptionsPlugin({ debug: true }),
+    ],
     output: {
-       path: path.join(__dirname, 'dist'), // C:\Users\SANGJUN\Desktop\SANGJUN\Programming\Workspace\vscode_workspace\ReactWebGame\wordplay\dist 이렇게 긴 파일 주소를 짧게 처리
-       filename: 'app.js'
-    } // 출력
+        filename: 'app.js',
+        path: path.join(__dirname, 'dist'),
+    },
 };
