@@ -31,9 +31,9 @@ class Baseball extends Component {
                 </form>
                 <div>시도: {this.state.tries.length}</div>
                 <ul>
-                    {['시은','아이사','수민','세은','재이','윤'].map( (v) => {
+                    {[['시은', '큐티'],['아이사', '여시'],['수민','똘똘'],['세은','청순'],['재이','착함'],['윤','키가 큼']].map( (v) => {
                         return (
-                            <li>{v}</li>
+                            <li><b>{v[0]}</b> - {v[1]}</li>
                         );
                     })}
                 </ul>
