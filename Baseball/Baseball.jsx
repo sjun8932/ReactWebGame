@@ -1,5 +1,6 @@
 const React = require('react');
 const {Component} = React;
+const Stayc = require('./Stayc');
 
 function getNumbers() {
 
@@ -22,6 +23,16 @@ class Baseball extends Component {
 
     };
 
+    stayc = [
+        {name: '시은', characteristic: '큐티'},
+        {name: '아이사', characteristic: '여시'},
+        {name: '수민', characteristic: '똘똘'},
+        {name: '세은', characteristic: '청순'},
+        {name: '재이', characteristic: '착함'},
+        {name: '윤',characteristic: '키가 큼'},
+        {name: '아이사', characteristic: '넘이쁨'}
+    ]
+
     render() {
         return (
             <>
@@ -31,17 +42,9 @@ class Baseball extends Component {
                 </form>
                 <div>시도: {this.state.tries.length}</div>
                 <ul>
-                    {[
-                        {이름: '시은', 특징: '큐티'},
-                        {이름: '아이사', 특징: '여시'},
-                        {이름: '수민', 특징: '똘똘'},
-                        {이름: '세은', 특징: '청순'},
-                        {이름: '재이', 특징: '착함'},
-                        {이름: '윤',특징: '키가 큼'},
-                        {이름: '아이사', 특징: '넘이쁨'}
-                    ].map( (v) => {
+                    {this.stayc.map( (v,i) => {
                         return (
-                            <li key={v.이름 + v.특징}><b>{v.이름}</b> - {v.특징}</li>
+                            <Stayc key={v.name + v.characteristic} value={v} index={i}/>
                         );
                     })}
                 </ul>
